@@ -46,7 +46,11 @@ static void allocation_failed() {
  */
 flightSys_t* createSystem() {
     // Replace this line with your code
-    return NULL;
+    flightSys_t* newSys = (flightSys_t*) malloc(sizeof(flightSys));
+    if(!newSys) allocation_failed();
+    else
+     newSys->airportList = NULL;
+    return newSys;
 }
 
 
