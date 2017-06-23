@@ -58,6 +58,7 @@ flightSys_t* createSystem() {
    after this function returns. (What does this mean in terms of how this pointer should be instantiated)?
 */
 
+// Jiaping
 flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    // Replace this line with your code
    return NULL;
@@ -66,6 +67,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
 /*
    Frees all memory associated with this system; that's all memory you dynamically allocated in your code.
  */
+ // Bowen
 void deleteSystem(flightSys_t* s) {
     // Replace this line with your code
 }
@@ -75,6 +77,7 @@ void deleteSystem(flightSys_t* s) {
    Adds a airport with the given name to the system. You must copy the string and store it.
    Do not store "name" (the pointer) as the contents it point to may change.
  */
+// Jiaping
 void addAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
 }
@@ -84,6 +87,8 @@ void addAirport(flightSys_t* s, char* name) {
    Returns a pointer to the airport with the given name.
    If the airport doesn't exist, return NULL.
  */
+ 
+ //Jiaping
 airport_t* getAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
     return NULL;
@@ -95,6 +100,7 @@ airport_t* getAirport(flightSys_t* s, char* name) {
    Make sure to end with a new line. You should compare your output with the correct output
    in flights.out to make sure your formatting is correct.
  */
+ //Bowen
 void printAirports(flightSys_t* s) {
     // Replace this line with your code
 }
@@ -103,6 +109,7 @@ void printAirports(flightSys_t* s) {
 /*
    Adds a flight to src's schedule, stating a flight will leave to dst at departure time and arrive at arrival time.
  */
+ // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     // Replace this line with your code
 }
@@ -118,6 +125,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
    the order they were added in through addFlight. Make sure to end with a new line.
    You should compare your output with the correct output in flights.out to make sure your formatting is correct.
  */
+ 
+ //Bowen
 void printSchedule(airport_t* s) {
     // Replace this line with your code
 }
@@ -133,6 +142,7 @@ void printSchedule(airport_t* s) {
 
    Please use the function isAfter() from time.h when comparing two timeHM_t objects.
  */
+ //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
     // Replace this line with your code
     return false;
@@ -147,6 +157,7 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
    Return from this function the total cost of taking these sequence of flights. If it is impossible to take these sequence of flights, if the list of destination airport names
    doesn't match the actual destination airport names provided in the flight_t struct's, or if you run into any errors mentioned previously or any other errors, return -1.
 */
+// Jiaping
 int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz) {
     // Replace this line with your code
     return -1;
