@@ -12,14 +12,23 @@
 
 struct flightSys {
     // Place the members you think are necessary for the flightSys struct here.
+    struct airport* airportList;
 };
 
 struct airport {
     // Place the members you think are necessary for the airport struct here.
+    char* name;
+    struct airport* next;
+    struct flight* flightList;
 };
 
 struct flight {
     // Place the members you think are necessary for the flight struct here.
+    struct airport* destination;
+    timeHM* departure;
+    timeHM* arrival;
+    int cost;
+    struct flight* next;
 };
 
 /*
