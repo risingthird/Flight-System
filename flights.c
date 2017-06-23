@@ -25,8 +25,8 @@ struct airport {
 struct flight {
     // Place the members you think are necessary for the flight struct here.
     struct airport* destination;
-    timeHM* departure;
-    timeHM* arrival;
+    timeHM departure;
+    timeHM arrival;
     int cost;
     struct flight* next;
 };
@@ -61,6 +61,11 @@ flightSys_t* createSystem() {
 // Jiaping
 flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    // Replace this line with your code
+   flight_t* newFlight = (flight_t*) malloc(sizeof(flight));
+   if(!newFlight) allocation_failed();
+   else{
+    
+   }
    return NULL;
 }
 
