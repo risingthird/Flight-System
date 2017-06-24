@@ -74,6 +74,10 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
  */
  // Bowen
 void deleteSystem(flightSys_t* s) {
+    free((s->airportList)->flightList);
+    (s->airportList)->flightList=NULL;
+    free(s);
+    s=NULL;
     // Replace this line with your code
 }
 
