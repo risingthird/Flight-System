@@ -115,6 +115,7 @@ void printAirports(flightSys_t* s) {
         printf(a->name,"\n");
         a=a->next;
       }
+    }
     // Replace this line with your code
 }
 
