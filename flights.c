@@ -10,26 +10,26 @@
 #include "flights.h"
 #include "timeHM.h"
 
-typedf struct flightSys flightSys_t {
+ struct flightSys {
     // Place the members you think are necessary for the flightSys struct here.
     struct airport_t* airportList;
-};
+};typedf struct flightSys flightSys_t;
 
-typedf struct airport airport_t {
+struct  airport{
     // Place the members you think are necessary for the airport struct here.
     char* name;
     struct airport_t* next;
     struct flight_t* flightList;
-};
+};typedf struct airport airport_t;
 
-typedf struct flight flight_t {
+struct flight {
     // Place the members you think are necessary for the flight struct here.
     struct airport_t* destination;
-    timeHM_t* departure;
-    timeHM_t* arrival;
+    timeHM_t departure;
+    timeHM_t arrival;
     int cost;
     struct flight_t* next;
-};
+};typedf struct flight flight_t;
 
 /*
    This should be called if memory allocation failed.
@@ -61,10 +61,15 @@ flightSys_t* createSystem() {
 // Jiaping
 flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    // Replace this line with your code
-   flight_t* newFlight = (flight_t*) malloc(sizeof(flight));
+   flight_t* newFlight = (flight_t*) malloc(sizeof(flight_t));
    if(!newFlight) allocation_failed();
    else{
-       newFlight-> = (airport_t*) 
+       newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
+       if(!newFlight->destination) allocation_failed();
+       newFlight->destination = dest;
+       if(dep != NULL) newFlight->departure = dep;
+       if(arr != NULL) newFlight->arrive = arr;
+       if(c) newFlight->cost = c;
    }
    return newFlight;
 }
