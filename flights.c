@@ -100,6 +100,21 @@ void deleteSystem(flightSys_t* s) {
 // Jiaping
 void addAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
+    if(name != NULL && s != NULL){
+        airport_t* newAirport = (airport_t*) malloc(sizeof(airport*));
+        if(!newAirport){allocation_failed();}
+        newAirport->name = (char*) malloc(sizeof(char)*(strlen(name)+1));
+        if(!newAirport) {allocation_failed();}
+        strcpy(newAirport->name, name); // use string copy to store contents
+        newAirport->flightList = NULL;
+        newAirport->next = NULL;
+        airport_t* p = s->airportList;
+        if(p == NULL) {p = newAirport;}
+        else{
+            while(p->next != NULL) p = p->next; // move pointer to the tail of linkedlist
+            p->next = newAirport;
+        }
+    }
 }
 
 
