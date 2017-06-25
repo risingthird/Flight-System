@@ -227,5 +227,11 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
 // Jiaping
 int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz) {
     // Replace this line with your code
+    int totalCost = 0;
+    int i = 0;
+    while(i<sz){
+        if(*(flight_list+i+1) == NULL) break;
+        else if(*(flight_list+i))
+    }
     return -1;
 }
