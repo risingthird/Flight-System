@@ -10,25 +10,25 @@
 #include "flights.h"
 #include "timeHM.h"
 
-struct flightSys {
+typedf struct flightSys flightSys_t {
     // Place the members you think are necessary for the flightSys struct here.
-    struct airport* airportList;
+    struct airport_t* airportList;
 };
 
-struct airport {
+typedf struct airport airport_t {
     // Place the members you think are necessary for the airport struct here.
     char* name;
-    struct airport* next;
-    struct flight* flightList;
+    struct airport_t* next;
+    struct flight_t* flightList;
 };
 
-struct flight {
+typedf struct flight flight_t {
     // Place the members you think are necessary for the flight struct here.
-    struct airport* destination;
-    timeHM* departure;
-    timeHM* arrival;
+    struct airport_t* destination;
+    timeHM_t* departure;
+    timeHM_t* arrival;
     int cost;
-    struct flight* next;
+    struct flight_t* next;
 };
 
 /*
@@ -64,9 +64,9 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    flight_t* newFlight = (flight_t*) malloc(sizeof(flight));
    if(!newFlight) allocation_failed();
    else{
-       
+       newFlight-> = (airport_t*) 
    }
-   return NULL;
+   return newFlight;
 }
 
 /*
@@ -74,7 +74,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
  */
  // Bowen
 void deleteSystem(flightSys_t* s) {
-    flight *p=s;
+    flightSys_t *p=s;
     if (s==NULL) return;
     while (p->next!=NULL){
         flight *q = p->next;
@@ -117,12 +117,13 @@ airport_t* getAirport(flightSys_t* s, char* name) {
  */
  //Bowen
 void printAirports(flightSys_t* s) {
-    struct Airport* a;
-    struct Airport* head=s->airportList;
+    struct airport_t* a;
+    struct airport_t* head=s->airportList;
     a=head;
     if (head!=NULL){
       while (a!= NULL){
-        printf(a->name,"\n");
+        printf("%s",a->name);
+        printf("/n");
         a=a->next;
       }
     }
