@@ -126,6 +126,15 @@ void addAirport(flightSys_t* s, char* name) {
  //Jiaping
 airport_t* getAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
+    if(name != NULL && s != NULL){
+        airport_t* p = s->airportList;
+        while(p!=NULL){
+            if(!strcmp(p->name,name))
+                return p;
+            else
+                p = p->next;
+        }
+    }
     return NULL;
 }
 
