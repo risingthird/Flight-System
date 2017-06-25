@@ -64,7 +64,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    flight_t* newFlight = (flight_t*) malloc(sizeof(flight));
    if(!newFlight) allocation_failed();
    else{
-    
+       
    }
    return NULL;
 }
@@ -74,8 +74,14 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
  */
  // Bowen
 void deleteSystem(flightSys_t* s) {
-    free((s->airportList)->flightList);
-    (s->airportList)->flightList=NULL;
+    flight *p=s;
+    if (s==NULL) return;
+    while (p->next!=NULL){
+        flight *q = p->next;
+        p->next=p->next->next;
+        free(q);
+    }
+    free(p);
     free(s);
     s=NULL;
     // Replace this line with your code
