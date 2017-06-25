@@ -236,8 +236,35 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
+    flight *pointer=src->flightList;
+    flight *nextFlight=NULL;
+    bool t=false;
+    int lowestCost=0;
+    while (pointer!=NULL){
+    	if (pointer->destination==dst->name){
+    		if (isAfter(departure,now)){
+    			t=true;
+    			if (nextFlight==NULL)
+    				nextFlight=pointer;
+    			else{
+    				if ((pointer->lowestCost) < (nextFlight->lowestCost))
+    					nextFlight=pointer;
+    				else{
+    					if ((pointer->lowestCost) == (nextFlight->lowestCost))
+    						if (isAfter(nextFlight->arrival,pointer->arrival))
+    							nextFlight=pointer;
+    				}
+    			}
+    		}
+    	}
+    	if (nextFlight!=NULL){
+    		*departure=nextFlight->departure;
+    		*arrival=nextFlight->arrival;
+    		*cost=nextFlight->cost;
+    	}
+    }
     // Replace this line with your code
-    return false;
+    return t;
 }
 
 /* Given a list of flight_t pointers (flight_list) and a list of destination airport names (airport_name_list), first confirm that it is indeed possible to take these sequences of flights,
