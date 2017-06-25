@@ -165,6 +165,22 @@ void printAirports(flightSys_t* s) {
  */
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
+    if (src!=NULL){
+    	flight * newFlight=(flight *) malloc (sizeof(flight));
+    	if (newFlight==NULL)
+    		allocation_failed();
+    	newFlight->departure=* departure;
+    	newFlight->arrival=*arrival;
+    	newFlight->cost=cost;
+    	strcpy(newFlight->destination,dst->namr);
+    	airport * head=src->flightList;
+        if (head==NULL)
+        	head=newFlight;
+        else{
+        	while (head->next!=NULL)
+        		head=head->next;
+        }
+        head->next=newFlight;
     // Replace this line with your code
 }
 
