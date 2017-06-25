@@ -25,8 +25,8 @@ struct airport {
 struct flight {
     // Place the members you think are necessary for the flight struct here.
     struct airport* destination;
-    timeHM departure;
-    timeHM arrival;
+    timeHM* departure;
+    timeHM* arrival;
     int cost;
     struct flight* next;
 };
@@ -146,6 +146,19 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
  
  //Bowen
 void printSchedule(airport_t* s) {
+    printf (s->name,"\n");
+    struct flight* a;
+    struct flight* head=s->flightList;
+    a=head;
+    if (head!=NULL){
+      while (a!= NULL){
+        printf(a->name," ");
+        printTime(a->departure," ");
+        printTime(a->arrival," ");
+        printf(a->cost,"\n");
+        a=a->next;
+      }
+    }
     // Replace this line with your code
 }
 
