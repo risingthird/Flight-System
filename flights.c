@@ -256,7 +256,10 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
     int i = 0;
     while(i<sz){
         if(*(flight_list+i+1) == NULL) break;
-        else if(*(flight_list+i))
+        else if(!isAfter(*(flight_list+i+1)->arrive, *(flight_list+i)->departure) && !isEqual(*(flight_list+i+1)->arrive,*(flight_list+i)->departure))
+            {return -1;} // return -1 if the next flight doesn't depart after or at the same time with the former one
+        else if(!strcmp(*(airport_name_list+i), *(flight_list+i)->destination->name)) return -1; // return -1 if the name doesn't match
+        else {totalCost = totalCost+ (*(flight_list+i)->cost);i++;}
     }
     return -1;
 }
