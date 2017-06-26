@@ -126,11 +126,11 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 	    char* srcName = line+prefixLen;
 	    curAirport = getAirport(s,srcName);
 		printf("%p",curAirport);
-	    if(curAirport)
-		printf("Adding schedule for airport %s\n",srcName);
+	    if(curAirport){
+		printf("Adding schedule for airport %s\n",srcName);printf("here")}
 	    else
 		printf("Cannot find airport %s\n",srcName);
-		//printf("here");
+		printf("here1");
 	} else if (curAirport) {
 	printf("here");
 	    char dstName[MAX_LINE_LEN];
