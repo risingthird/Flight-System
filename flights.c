@@ -161,7 +161,7 @@ void printAirports(flightSys_t* s) {
     if (head!=NULL){
       while (a!= NULL){
         printf("%s",a->name);
-        printf("/n");
+        printf("\n");
         a=a->next;
       }
     }
