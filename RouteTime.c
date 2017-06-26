@@ -120,7 +120,6 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
     while(fgets(line, MAX_LINE_LEN, schedule)) {
 	if(!strcmp(line,"\n") || !strcmp(line,"\r\n")) continue;
 	else if(strncmp(line,newAirportPrefix,prefixLen) == 0){
-	    printf("Here");
 	    if(curAirport) printSchedule(curAirport); //done with previous schedule so print it
 
 	    stripNewLine(line);
@@ -131,6 +130,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 	    else
 		printf("Cannot find airport %s\n",srcName);
 	} else if (curAirport) {
+	printf("here");
 	    char dstName[MAX_LINE_LEN];
 	    char departureStr[MAX_LINE_LEN];
 	    char arrivalStr[MAX_LINE_LEN];
