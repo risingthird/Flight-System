@@ -252,7 +252,7 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
     				if ((pointer->cost) < (nextFlight->cost))
     					nextFlight=pointer;
     				else{
-    					if ((cost) == (nextFlight->cost))
+    					if ((pointer->cost) == (nextFlight->cost))
     						if (isAfter(&nextFlight->arrival,&pointer->arrival))
     							nextFlight=pointer;
     				}
