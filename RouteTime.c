@@ -157,7 +157,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 	    }
 		printf("Entering here\n");
 	    addFlight(curAirport,dst,&departure,&arrival, cost);
-		printf("haverford\n")
+		printf("haverford\n");
 	}
     }
     if(curAirport) printSchedule(curAirport);
