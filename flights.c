@@ -209,8 +209,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
  //Bowen
 void printSchedule(airport_t* s) {
     printf (s->name,"\n");
-    struct flight_t* a;
-    struct flight_t* head=s->flightList;
+    flight_t* a;
+    flight_t* head=s->flightList;
     a=head;
     if (head!=NULL){
       while (a!= NULL){
