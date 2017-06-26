@@ -214,12 +214,12 @@ void printSchedule(airport_t* s) {
     a=head;
     if (head!=NULL){
       while (a!= NULL){
-        printf("%s",a->destination," ");
+        printf("%s ",a->destination);
         printTime(&a->departure);
         printf(" ");
         printTime(&a->arrival);
         printf(" ");
-        printf("$%d",a->cost,"\n");
+        printf("$%d\n",a->cost);
         a=a->next;
       }
     }
