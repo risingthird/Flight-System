@@ -13,14 +13,14 @@
 struct flightSys {
     // Place the members you think are necessary for the flightSys struct here.
     struct airport_t* airportList;
-};typedef struct flightSys flightSys_t;
+};
 
 struct  airport{
     // Place the members you think are necessary for the airport struct here.
     char* name;
     struct airport_t* next;
     struct flight_t* flightList;
-};typedef struct airport airport_t;
+};
 
 struct flight {
     // Place the members you think are necessary for the flight struct here.
@@ -29,7 +29,7 @@ struct flight {
     timeHM_t arrival;
     int cost;
     struct flight_t* next;
-};typedef struct flight flight_t;
+};
 
 /*
    This should be called if memory allocation failed.
@@ -80,16 +80,16 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
  // Bowen
 void deleteSystem(flightSys_t* s) {
     if (s==NULL) return;
-    airport * head=s->airportList;
+    airport_t * head=s->airportList;
     while (head->next!=NULL){
-    	flight * head2=head->flightList;
+    	flight_t * head2=head->flightList;
     	while (head2->next!=NULL){
-        	flight * f=head2->next;
+        	flight_t * f=head2->next;
         	head2->next=head2->next->next;
         	free(f);
         }
         free(head2);
-        airport * Pointer=head->next;
+        airport_t * Pointer=head->next;
         head->next=head->next->next;
         free(Pointer);
         
@@ -175,14 +175,14 @@ void printAirports(flightSys_t* s) {
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     if (src!=NULL){
-    	flight * newFlight=(flight *) malloc (sizeof(flight));
+    	flight_t * newFlight=(flight *) malloc (sizeof(flight));
     	if (newFlight==NULL)
     		allocation_failed();
     	newFlight->departure=* departure;
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
-    	strcpy(newFlight->destination,dst->namr);
-    	airport * head=src->flightList;
+    	strcpy(newFlight->destination,dst->name);
+    	airport_t * head=src->flightList;
         if (head==NULL)
         	head=newFlight;
         else{
@@ -208,8 +208,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
  //Bowen
 void printSchedule(airport_t* s) {
     printf (s->name,"\n");
-    struct flight* a;
-    struct flight* head=s->flightList;
+    struct flight_t* a;
+    struct flight_t* head=s->flightList;
     a=head;
     if (head!=NULL){
       while (a!= NULL){
@@ -236,8 +236,8 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
-    flight *pointer=src->flightList;
-    flight *nextFlight=NULL;
+    flight_t *pointer=src->flightList;
+    flight_t *nextFlight=NULL;
     bool t=false;
     int lowestCost=0;
     while (pointer!=NULL){
