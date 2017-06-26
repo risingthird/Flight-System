@@ -155,8 +155,8 @@ airport_t* getAirport(flightSys_t* s, char* name) {
  */
  //Bowen
 void printAirports(flightSys_t* s) {
-    struct airport_t* a;
-    struct airport_t* head=s->airportList;
+    struct airport* a;
+    struct airport* head=s->airportList;
     a=head;
     if (head!=NULL){
       while (a!= NULL){
