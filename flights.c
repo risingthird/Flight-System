@@ -186,10 +186,11 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
         if (head==NULL)
         	src->flightList=newFlight;
         else{
-        	while (head->next!=NULL)
+        	while (head->next != NULL)
         		head=head->next;
+            head->next=newFlight;
         }
-        head->next=newFlight;
+        
     }
     // Replace this line with your code
 }
