@@ -130,6 +130,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 		printf("here\n");
 		printf("%s\n",srcName);
 		printf("Adding schedule for airport %s\n",srcName);
+		printf("here\n");
 		}
 	    else
 		printf("Cannot find airport %s\n",srcName);
