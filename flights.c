@@ -155,8 +155,8 @@ airport_t* getAirport(flightSys_t* s, char* name) {
  */
  //Bowen
 void printAirports(flightSys_t* s) {
-    struct airport* a;
-    struct airport* head=s->airportList;
+    airport_t * a;
+    airport_t * head=s->airportList;
     a=head;
     if (head!=NULL){
       while (a!= NULL){
@@ -175,7 +175,7 @@ void printAirports(flightSys_t* s) {
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     if (src!=NULL){
-    	flight_t * newFlight=(flight *) malloc (sizeof(flight_t));
+    	flight_t * newFlight=(flight_t *) malloc (sizeof(flight_t));
     	if (newFlight==NULL)
     		allocation_failed();
     	newFlight->departure=* departure;
