@@ -176,7 +176,7 @@ void printAirports(flightSys_t* s) {
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     if (src!=NULL){
     	flight_t * newFlight=(flight_t *) malloc (sizeof(flight_t));
-    	if (newFlight==NULL)
+    	if (!newFlight)
     		allocation_failed();
     	newFlight->departure=* departure;
     	newFlight->arrival=*arrival;
@@ -184,7 +184,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     	strcpy(newFlight->destination->name,dst->name);
     	flight_t * head=src->flightList;
         if (head==NULL)
-        	head=newFlight;
+        	src->flightList=newFlight;
         else{
         	while (head->next!=NULL)
         		head=head->next;
