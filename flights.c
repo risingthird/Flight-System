@@ -209,7 +209,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
  
  //Bowen
 void printSchedule(airport_t* s) {
-    printf ("%s\n",s->name);
+    printf ("%s",s->name);
+    printf("\n");
     flight_t* a;
     flight_t* head=s->flightList;
     a=head;
