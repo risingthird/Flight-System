@@ -161,7 +161,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 	    addFlight(curAirport,dst,&departure,&arrival, cost);
 	}
     }
-	printf("%p",curAirport);
+	printf("%p\n",curAirport);
     if(curAirport) printSchedule(curAirport);
 }
 
