@@ -190,6 +190,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
         		head=head->next;
         }
         head->next=newFlight;
+    }
     // Replace this line with your code
 }
 
