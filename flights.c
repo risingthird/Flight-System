@@ -118,7 +118,7 @@ void addAirport(flightSys_t* s, char* name) {
         newAirport->flightList = NULL;
         newAirport->next = NULL;
         airport_t* p = s->airportList;
-        if(p == NULL) {p = newAirport;}
+        if(p == NULL) {s->airportList = newAirport;}
         else{
             while(p->next != NULL) p = p->next; // move pointer to the tail of linkedlist
             p->next = newAirport;
