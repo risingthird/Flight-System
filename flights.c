@@ -178,6 +178,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     if (src!=NULL){
         printf("here2\n");
     	flight_t * newFlight=(flight_t *) malloc (sizeof(flight_t));
+        newFlight->destination->next=NULL;
+        newFlight->destination->flightList=NULL;
         newFlight->destination->name =malloc (sizeof(char)*(strlen(dst->name)+1));
     	if (!newFlight)
     		allocation_failed();
