@@ -13,14 +13,14 @@
  struct flightSys {
     // Place the members you think are necessary for the flightSys struct here.
     struct airport_t* airportList;
-};typedf struct flightSys flightSys_t;
+};
 
 struct  airport{
     // Place the members you think are necessary for the airport struct here.
     char* name;
     struct airport_t* next;
     struct flight_t* flightList;
-};typedf struct airport airport_t;
+};
 
 struct flight {
     // Place the members you think are necessary for the flight struct here.
@@ -29,7 +29,7 @@ struct flight {
     timeHM_t arrival;
     int cost;
     struct flight_t* next;
-};typedf struct flight flight_t;
+};
 
 /*
    This should be called if memory allocation failed.
