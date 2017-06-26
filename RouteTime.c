@@ -153,6 +153,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 		printf("Skipping line: %s\n",line);
 		continue;
 	    }
+		printf("Entering here");
 	    addFlight(curAirport,dst,&departure,&arrival, cost);
 	}
     }
