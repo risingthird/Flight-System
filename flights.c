@@ -290,5 +290,5 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
         else if(!strcmp(*(airport_name_list+i), *(flight_list+i)->destination->name)) return -1; // return -1 if the name doesn't match
         else {totalCost = totalCost+ (*(flight_list+i)->cost);i++;}
     }
-    return -1;
+    return totalCost;
 }
