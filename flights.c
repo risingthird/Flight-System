@@ -240,18 +240,17 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
     flight_t *pointer=src->flightList;
     flight_t *nextFlight=NULL;
     bool t=false;
-    int lowestCost=0;
     while (pointer!=NULL){
-    	if (pointer->destination==dst->name){
+    	if (strcmp(pointer->destination, dst->name)==0){
     		if (isAfter(departure,now)){
     			t=true;
     			if (nextFlight==NULL)
     				nextFlight=pointer;
     			else{
-    				if ((pointer->lowestCost) < (nextFlight->lowestCost))
+    				if ((pointer->cost) < (nextFlight->cost))
     					nextFlight=pointer;
     				else{
-    					if ((pointer->lowestCost) == (nextFlight->lowestCost))
+    					if ((cost) == (nextFlight->cost))
     						if (isAfter(nextFlight->arrival,pointer->arrival))
     							nextFlight=pointer;
     				}
