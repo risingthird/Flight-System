@@ -174,10 +174,14 @@ void printAirports(flightSys_t* s) {
  */
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
+        printf("here1\n");
     if (src!=NULL){
+        printf("here2\n");
     	flight_t * newFlight=(flight_t *) malloc (sizeof(flight_t));
-    	if (!newFlight)
+    	if (!newFlight){
+            printf("here3\n");
     		allocation_failed();
+        }
     	newFlight->departure=* departure;
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
@@ -187,6 +191,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
         if (head==NULL)
         	src->flightList=newFlight;
         else{
+            printf("here4\n");
         	while (head->next != NULL)
         		head=head->next;
             head->next=newFlight;
@@ -211,8 +216,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
  //Bowen
 void printSchedule(airport_t* s) {
     if (s!=NULL){
-    printf ("AIRPORT: %s",s->name);
-    printf("\n");
+    printf ("AIRPORT: %s\n",s->name);
     flight_t* a=s->flightList;
     while (a!= NULL){
         printf("%s ",a->destination->name);
