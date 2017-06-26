@@ -46,7 +46,7 @@ static void allocation_failed() {
  */
 flightSys_t* createSystem() {
     // Replace this line with your code
-    flightSys_t* newSys = (flightSys_t*) malloc(sizeof(flightSys));
+    flightSys_t* newSys = (flightSys_t*) malloc(sizeof(flightSys_t));
     if(!newSys) allocation_failed();
     else
      newSys->airportList = NULL;
@@ -110,7 +110,7 @@ void deleteSystem(flightSys_t* s) {
 void addAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
     if(name != NULL && s != NULL){
-        airport_t* newAirport = (airport_t*) malloc(sizeof(airport*));
+        airport_t* newAirport = (airport_t*) malloc(sizeof(airport_t));
         if(!newAirport){allocation_failed();}
         newAirport->name = (char*) malloc(sizeof(char)*(strlen(name)+1));
         if(!newAirport) {allocation_failed();}
@@ -175,7 +175,7 @@ void printAirports(flightSys_t* s) {
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     if (src!=NULL){
-    	flight_t * newFlight=(flight *) malloc (sizeof(flight));
+    	flight_t * newFlight=(flight *) malloc (sizeof(flight_t));
     	if (newFlight==NULL)
     		allocation_failed();
     	newFlight->departure=* departure;
