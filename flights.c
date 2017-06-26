@@ -182,7 +182,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
     	strcpy(newFlight->destination,dst->name);
-    	airport_t * head=src->flightList;
+    	flight_t * head=src->flightList;
         if (head==NULL)
         	head=newFlight;
         else{
@@ -216,7 +216,7 @@ void printSchedule(airport_t* s) {
       while (a!= NULL){
         printf("%s",a->destination," ");
         printTime(&a->departure);
-        print(" ");
+        printf(" ");
         printTime(&a->arrival);
         printf(" ");
         printf("$%d",a->cost,"\n");
