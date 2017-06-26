@@ -188,6 +188,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
         newFlight->next=NULL;
+        printf("%p\n",newFlight);
     	strcpy(newFlight->destination->name,dst->name);
         printf("here5\n");
     	flight_t * head=src->flightList;
