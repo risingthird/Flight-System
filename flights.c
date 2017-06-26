@@ -112,7 +112,7 @@ void addAirport(flightSys_t* s, char* name) {
     if(name != NULL && s != NULL){
         airport_t* newAirport = (airport_t*) malloc(sizeof(airport_t));
         if(!newAirport){allocation_failed();}
-        newAirport->name = (char*) malloc(sizeof(char)*(strlen(name)+1));
+        newAirport->name = malloc(sizeof(char)*(strlen(name)+1));
         if(!newAirport->name) {allocation_failed();}
         strcpy(newAirport->name, name); // use string copy to store contents
         newAirport->flightList = NULL;
