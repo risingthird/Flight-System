@@ -214,7 +214,7 @@ void printSchedule(airport_t* s) {
     a=head;
     if (head!=NULL){
       while (a!= NULL){
-        printf("%s ",a->destination);
+        printf("%s ",a->destination->name);
         printTime(&a->departure);
         printf(" ");
         printTime(&a->arrival);
@@ -243,7 +243,7 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
     flight_t *nextFlight=NULL;
     bool t=false;
     while (pointer!=NULL){
-    	if (strcmp(pointer->destination, dst->name)==0){
+    	if (strcmp(pointer->destination->name, dst->name)==0){
     		if (isAfter(departure,now)){
     			t=true;
     			if (nextFlight==NULL)
