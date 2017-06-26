@@ -215,9 +215,10 @@ void printSchedule(airport_t* s) {
     if (head!=NULL){
       while (a!= NULL){
         printf(a->destination," ");
-        printTime(a->departure," ");
+        printTime(a->departure);
+        print(" ");
         printTime(a->arrival," ");
-        printf(a->cost,"\n");
+        printf(" ",a->cost,"\n");
         a=a->next;
       }
     }
