@@ -282,7 +282,7 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
     int i = 0;
     while(i<sz){
         printf("here2\n");
-        printf("%p\n",**(flight_list+i+1));
+        printf("%p\n",*(*(flight_list+i+1)));
         printf("here3\n");
         if(*(flight_list+i+1) == NULL) break;
         else if(!isAfter(&((*(flight_list+i+1))->departure), &((*(flight_list+i))->arrival)) && !isEqual(&((*(flight_list+i+1))->arrival),&((*(flight_list+i))->departure)))
