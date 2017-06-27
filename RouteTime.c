@@ -131,7 +131,6 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 	    else
 		printf("Cannot find airport %s\n",srcName);
 	} else if (curAirport) {
-	printf("here\n");
 	    char dstName[MAX_LINE_LEN];
 	    char departureStr[MAX_LINE_LEN];
 	    char arrivalStr[MAX_LINE_LEN];
@@ -155,9 +154,7 @@ void parseSchedule(flightSys_t* s, FILE* schedule) {
 		printf("Skipping line: %s\n",line);
 		continue;
 	    }
-		printf("Entering here\n");
 	    addFlight(curAirport,dst,&departure,&arrival, cost);
-		printf("haverford\n");
 	}
     }
     if(curAirport) printSchedule(curAirport);
