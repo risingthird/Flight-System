@@ -81,18 +81,20 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
 void deleteSystem(flightSys_t* s) {
     if (s==NULL) return;
     airport_t* pointer2=s->airportList;
+    airport_t* head;
+    flight_t* head2;
     while (!pointer2){
-        airport_t* head=pointer2;
+        head=pointer2;
         flight_t* pointer=head->flightList;
         //free the memory allocated to airport
         while (pointer!=NULL){
             //free the memory allocated to flight
-    	    flight_t* head2=pointer;
-            *pointer=*(head2->next);
+    	    head2=pointer;
+            pointer=head2->next;
             free(head2);
         }
         free(head->name);
-        *pointer2=*(head->next);
+        pointer2=head->next;
         free(head);
     }
     free(s);
