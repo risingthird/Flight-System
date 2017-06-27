@@ -176,39 +176,29 @@ void printAirports(flightSys_t* s) {
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     printf("here1\n");
     if (src!=NULL){
-        printf("here2\n");
     	flight_t* newFlight=(flight_t* ) malloc(sizeof(flight_t));
         newFlight->destination=(airport_t* ) malloc(sizeof(airport_t));
-        printf("here9\n");
         if (!newFlight){
-            printf("here7\n");
     		allocation_failed();
         }
-        printf("here10\n");
         newFlight->destination->next=NULL;
-        printf("here11\n");
         newFlight->destination->flightList=NULL;
-        printf("here8\n");
         newFlight->destination->name =(char*) malloc(sizeof(char)*(strlen(dst->name)+1));
-    	printf("here6\n");
     	newFlight->departure=*departure;
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
         newFlight->next=NULL;
         printf("%p\n",newFlight);
     	strcpy(newFlight->destination->name,dst->name);
-        printf("here5\n");
     	flight_t* head=src->flightList;
         if (head==NULL){
-            printf("here3\n");
         	src->flightList=newFlight;
         }
         else{
-            printf("here4\n");
         	while (head->next != NULL)
         		head=head->next;
         }
-            head->next=newFlight;        
+        head->next=newFlight;        
     }
     // Replace this line with your code
 }
