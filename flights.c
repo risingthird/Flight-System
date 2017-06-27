@@ -105,7 +105,7 @@ void deleteSystem(flightSys_t* s) {
 void addAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
     if(name != NULL && s != NULL){
-        airport_t* newAirport = (airport_t*) malloc(sizeof(airport_t));
+        airport_t* newAirport ;//= (airport_t*) malloc(sizeof(airport_t))
         if(!newAirport){allocation_failed();}
         newAirport->name = malloc(sizeof(char)*(strlen(name)+1));
         if(!newAirport->name) {allocation_failed();}
