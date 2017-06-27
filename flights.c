@@ -255,8 +255,8 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
             if(!nextFlight) nextFlight = p;   // first found flight that apply both rules
             else if(p->cost < nextFlight->cost) nextFlight = p;
             else if(p->cost == nextFlight->cost && isAfter(&(nextFlight->arrival),&(p->arrival))) nextFlight = p;
-            p = p->next;
         }
+        p = p->next;
     }
     if (nextFlight!=NULL){
   		*departure=nextFlight->departure;
