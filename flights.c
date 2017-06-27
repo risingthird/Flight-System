@@ -100,6 +100,7 @@ void deleteSystem(flightSys_t* s) {
         free(head);
         //head=NULL;
     }
+    free(s->airportList);
     free(s);
     //s=NULL;
     // Replace this line with your code
