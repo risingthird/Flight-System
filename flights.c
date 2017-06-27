@@ -280,10 +280,11 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
     // Replace this line with your code
     int totalCost = 0;
     int i = 0;
+    if(!flight_list) return -1;
     while(i<sz){
-        printf("here2\n");
-        printf("%p\n",flight_list);
-        printf("here3\n");
+        //printf("here2\n");
+        //printf("%p\n",flight_list);
+        //printf("here3\n");
         if(*(flight_list+i+1) == NULL) break;
         else if(!isAfter(&((*(flight_list+i+1))->departure), &((*(flight_list+i))->arrival)) && !isEqual(&((*(flight_list+i+1))->arrival),&((*(flight_list+i))->departure)))
             {printf("here1\n");return -1;} // return -1 if the next flight doesn't depart after or at the same time with the former one
