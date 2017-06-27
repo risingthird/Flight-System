@@ -99,6 +99,7 @@ void deleteSystem(flightSys_t* s) {
         head->name=NULL;
         s->airportList=head->next;
         free(head);
+        head=NULL;
     }
     free(s);
     s=NULL;
