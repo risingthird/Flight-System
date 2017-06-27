@@ -250,11 +250,11 @@ bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* depa
     flight_t *nextFlight=NULL;
     bool flag=false;
     while (p!=NULL){
-    	if (!strcmp(pointer->destination->name, dst->name) && isAfter(departure,now)){
+    	if (!strcmp(p->destination->name, dst->name) && isAfter(departure,now)){
     		flag = true;
             if(!nextFlight) nextFlight = p;   // first found flight that apply both rules
             else if(p->cost < nextFlight->cost) nextFlight = p;
-            else if(p->cost == nextFlight->cost && isAfter(&(nextFlight->arrival),&(p->nextFlight))) nextFlight = p;
+            else if(p->cost == nextFlight->cost && isAfter(&(nextFlight->arrival),&(p->arrival))) nextFlight = p;
             p = p->next;
         }
     }
