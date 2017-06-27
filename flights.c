@@ -80,17 +80,19 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
  // Bowen
 void deleteSystem(flightSys_t* s) {
     if (s==NULL) return;
-    while (!(s->airportList)){
-        airport_t * head=s->airportList;
+    airport_t* pointer2=s->airportList;
+    while (!pointer2){
+        airport_t* head=pointer2;
+        flight_t* pointer=head->flightList;
         //free the memory allocated to airport
-        while ((head->flightList)!=NULL){
+        while (pointer!=NULL){
             //free the memory allocated to flight
-    	    flight_t* head2=head->flightList;
-            head->flightList=head2->next;
+    	    flight_t* head2=pointer;
+            pointer=head2->next;
             free(head2);
         }
         free(head->name);
-        s->airportList=head->next;
+        pointer2=head->next;
         free(head);
     }
     free(s);
