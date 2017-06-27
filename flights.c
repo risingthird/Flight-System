@@ -91,16 +91,17 @@ void deleteSystem(flightSys_t* s) {
             head->flightList->destination->name=NULL;*/
             head->flightList=head2->next;
             free(head2);
-            head2=NULL;
+            //head2=NULL;
         }
+        free(head->flightList);
         free(head->name);
-        head->name=NULL;
+        //head->name=NULL;
         s->airportList=head->next;
         free(head);
-        head=NULL;
+        //head=NULL;
     }
     free(s);
-    s=NULL;
+    //s=NULL;
     // Replace this line with your code
 }
 
