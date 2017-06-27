@@ -88,11 +88,11 @@ void deleteSystem(flightSys_t* s) {
         while (pointer!=NULL){
             //free the memory allocated to flight
     	    flight_t* head2=pointer;
-            *pointer=head2->next;
+            *pointer=*(head2->next);
             free(head2);
         }
         free(head->name);
-        *pointer2=head->next;
+        *pointer2=*(head->next);
         free(head);
     }
     free(s);
