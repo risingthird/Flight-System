@@ -245,34 +245,25 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
-    flight_t *pointer=src->flightList;
+    if(!src || !dst) return false;
+    flight_t *p=src->flightList;
     flight_t *nextFlight=NULL;
-    bool t=false;
-    while (pointer!=NULL){
-    	if (strcmp(pointer->destination->name, dst->name)==0){
-    		if (isAfter(departure,now)){
-    			t=true;
-    			if (nextFlight==NULL)
-    				nextFlight=pointer;
-    			else{
-    				if ((pointer->cost) < (nextFlight->cost))
-    					nextFlight=pointer;
-    				else{
-    					if ((pointer->cost) == (nextFlight->cost))
-    						if (isAfter(&nextFlight->arrival,&pointer->arrival))
-    							nextFlight=pointer;
-    				}
-    			}
-    		}
-    	}
-    	if (nextFlight!=NULL){
-    		*departure=nextFlight->departure;
-    		*arrival=nextFlight->arrival;
-    		*cost=nextFlight->cost;
-    	}
+    bool flag=false;
+    while (p!=NULL){
+    	if (!strcmp(pointer->destination->name, dst->name) && isAfter(departure,now)){
+    		flag = true;
+            if(!nextFlight) nextFlight = p;   // first found flight that apply both rules
+            else if(p->cost < nextFlight->cost) nextFlight = p;
+            else if(p->cost == nextFlight->cost && isAfter(&(nextFlight->arrival),&(p->nextFlight))) nextFlight = p;
+            p = p->next;
+        }
     }
-    // Replace this line with your code
-    return t;
+    if (nextFlight!=NULL){
+  		*departure=nextFlight->departure;
+   		*arrival=nextFlight->arrival;
+   		*cost=nextFlight->cost;
+   	}
+    return flag;
 }
 
 /* Given a list of flight_t pointers (flight_list) and a list of destination airport names (airport_name_list), first confirm that it is indeed possible to take these sequences of flights,
