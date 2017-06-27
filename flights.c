@@ -86,7 +86,6 @@ void deleteSystem(flightSys_t* s) {
         while (head->flightList!=NULL){
             //free the memory allocated to flight
     	    flight_t* head2=head->flightList;
-            flight_t* previous=head2;
             //free the memory allocated to flight's destination's name
             free(head->flightList->destination->name);
             head->flightList->destination->name=NULL;
