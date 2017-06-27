@@ -183,8 +183,8 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
         newFlight->destination->next=NULL;
         newFlight->destination->flightList=NULL;
         newFlight->destination->name =(char*) malloc(sizeof(char)*(strlen(dst->name)+1));
-    	
-    	newFlight->departure=* departure;
+    	printf("here6\n");
+    	newFlight->departure=*departure;
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
         newFlight->next=NULL;
