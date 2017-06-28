@@ -64,10 +64,9 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    flight_t* newFlight = (flight_t*) malloc(sizeof(flight_t));
    if(!newFlight) allocation_failed();
    else{
-       //newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
-       //if(!newFlight->destination) allocation_failed();
-       if(!dest) {free(newFlight);return NULL;}
-       else  newFlight->destination = dest;
+       newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
+       if(!newFlight->destination) allocation_failed();
+       newFlight->destination = dest;
        newFlight->departure = dep;
        newFlight->arrival = arr;
        if(c) newFlight->cost = c;
@@ -172,14 +171,14 @@ void printAirports(flightSys_t* s) {
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
     if (src!=NULL){
     	flight_t* newFlight=(flight_t* ) malloc(sizeof(flight_t));
+        newFlight->destination=(airport_t* ) malloc(sizeof(airport_t));
         if (!newFlight){
     		allocation_failed();
         }
-        newFlight->destination=dst;
-        /**newFlight->destination->next=NULL;
+        newFlight->destination->next=NULL;
         newFlight->destination->flightList=NULL;
         newFlight->destination->name =(char*) malloc(sizeof(char)*(strlen(dst->name)+1));
-    	newFlight->departure=*departure;*/
+    	newFlight->departure=*departure;
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
         newFlight->next=NULL;
