@@ -78,7 +78,8 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
 }
 
 void deleteFlight(airport_t* a){
-	node = a->flightList;              
+	flight_t* node = a->flightList; 
+    flight_t* temp;
     while (node != NULL){
 		temp = node;         
     	node = node.next;  
