@@ -93,8 +93,8 @@ void deleteSystem(flightSys_t* s) {
     airport_t* pointer=s->airportList;
     airport_t* head;
     //flight_t* head2;
-    while (!pointer2){
-        head=pointer2;
+    while (!pointer){
+        head=pointer;
         //flight_t* pointer=head->flightList;
         //free the memory allocated to airport
         /**while (pointer!=NULL){
