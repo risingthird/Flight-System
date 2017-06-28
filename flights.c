@@ -187,7 +187,9 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     	newFlight->cost=cost;
         newFlight->next=NULL;
     	strcpy(newFlight->destination->name,dst->name);*/
-        newFlight = createFlight(dst,*departure,*arrival,cost);
+        if(!c || !dst){free(newFlight);return;}
+        else{
+        newFlight = createFlight(dst,*departure,*arrival,cost);}
     	flight_t* head=src->flightList;
         if (head==NULL){
         	src->flightList=newFlight;
@@ -245,7 +247,7 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
-    if(!src || !dst) return false;
+    if(!src || !dst || !now) return false;
     flight_t *p=src->flightList;
     flight_t *nextFlight=NULL;
     bool flag=false;
