@@ -65,9 +65,8 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    if(!newFlight) allocation_failed();
    else{
        //newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
-      // if(!newFlight->destination) allocation_failed();
-       if(!dest) newFlight->destination = dest;
-       else {free(newFlight); return NULL;}
+       if(!newFlight->destination) allocation_failed();
+       newFlight->destination = dest;
        newFlight->departure = dep;
        newFlight->arrival = arr;
        if(c) newFlight->cost = c;
@@ -75,38 +74,23 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    return newFlight;
 }
 
-void deleteFlight(airport_t* a){
-    if (a==NULL) return;
-    flight_t* head;
-    flight_t* pointer=a->flightList;
-    while (!pointer){
-        head=pointer;
-        pointer=head->next;
-        free(head);
-    }
-}
 /*
    Frees all memory associated with this system; that's all memory you dynamically allocated in your code.
  */
  // Bowen
 void deleteSystem(flightSys_t* s) {
     if (s==NULL) return;
-    airport_t* pointer=s->airportList;
-    airport_t* head;
-    //flight_t* head2;
-    while (!pointer){
-        head=pointer;
-        //flight_t* pointer=head->flightList;
+    while (!(s->airportList)){
+        airport_t * head=s->airportList;
         //free the memory allocated to airport
-        /**while (pointer!=NULL){
+        while ((head->flightList)!=NULL){
             //free the memory allocated to flight
-    	    head2=pointer;
-            pointer=head2->next;
+    	    flight_t* head2=head->flightList;
+            head->flightList=head2->next;
             free(head2);
-        }*/
-        deleteFlight(pointer);
+        }
         free(head->name);
-        pointer=head->next;
+        s->airportList=head->next;
         free(head);
     }
     free(s);
@@ -185,22 +169,21 @@ void printAirports(flightSys_t* s) {
  */
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
-    if (src!=NULL && dst!=NULL && cost && departure && arrival){
-    	/**flight_t* newFlight=(flight_t* ) malloc(sizeof(flight_t));
+    if (src!=NULL){
+    	flight_t* newFlight=(flight_t* ) malloc(sizeof(flight_t));
         if (!newFlight){
     		allocation_failed();
         }
         newFlight->destination=dst;
-        //newFlight->destination->next=NULL;
-        //newFlight->destination->flightList=NULL;
-        //newFlight->destination->name =(char*) malloc(sizeof(char)*(strlen(dst->name)+1));
-    	newFlight->departure=*departure;
+        /**newFlight->destination->next=NULL;
+        newFlight->destination->flightList=NULL;
+        newFlight->destination->name =(char*) malloc(sizeof(char)*(strlen(dst->name)+1));
+    	newFlight->departure=*departure;*/
     	newFlight->arrival=*arrival;
     	newFlight->cost=cost;
-        newFlight->next=NULL;*/
-    	//strcpy(newFlight->destination->name,dst->name);
-    	flight_t* newFlight=createFlight(dst,*departure,*arrival,cost);
-        flight_t* head=src->flightList;
+        newFlight->next=NULL;
+    	strcpy(newFlight->destination->name,dst->name);
+    	flight_t* head=src->flightList;
         if (head==NULL){
         	src->flightList=newFlight;
         }
@@ -257,7 +240,7 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
-    if(!src || !dst || !now) return false;
+    if(!src || !dst) return false;
     flight_t *p=src->flightList;
     flight_t *nextFlight=NULL;
     bool flag=false;
@@ -294,10 +277,13 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
     int i = 0;
     if(!flight_list) return -1;
     while(i<sz){
+        //printf("here2\n");
+        //printf("%p\n",flight_list);
+        //printf("here3\n");
         if(*(flight_list+i+1) == NULL) break;
         else if(!isAfter(&((*(flight_list+i+1))->departure), &((*(flight_list+i))->arrival)) && !isEqual(&((*(flight_list+i+1))->departure),&((*(flight_list+i))->arrival)))
             {printf("here1\n");return -1;} // return -1 if the next flight doesn't depart after or at the same time with the former one
-        else if(strcmp(*(airport_name_list+i), (*(flight_list+i))->destination->name)) {printf("here2\n");return -1;} // return -1 if the name doesn't match
+        else if(strcmp(*(airport_name_list+i), (*(flight_list+i))->destination->name)) {return -1;} // return -1 if the name doesn't match
         else {totalCost = totalCost+ ((*(flight_list+i))->cost);i++;}
     }
     return totalCost;
