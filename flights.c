@@ -77,6 +77,16 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    return newFlight;
 }
 
+void deleteFlight(airport_t* a){
+	node = a->flightList;              
+    while (node != null){
+		temp = node;         
+    	node = node.next;  
+    	free (temp);
+	}
+    a->flightList=null;
+}
+
 /*
    Frees all memory associated with this system; that's all memory you dynamically allocated in your code.
  */
@@ -86,17 +96,19 @@ void deleteSystem(flightSys_t* s) {
     while (!(s->airportList)){
         airport_t * head=s->airportList;
         //free the memory allocated to airport
-        while ((head->flightList)!=NULL){
+        if(head->flightList)!=NULL){
             //free the memory allocated to flight
-    	    flight_t* head2=head->flightList;
+    	    /**flight_t* head2=head->flightList;
             head->flightList=head2->next;
             free(head2);
-        }
+        }*/
+		deleteFlight(head);
         free(head->name);
         s->airportList=head->next;
         free(head);
-    }
+    	}
     free(s);
+	}
 }
 
 
