@@ -81,7 +81,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    Frees all memory associated with this system; that's all memory you dynamically allocated in your code.
  */
  // Bowen
-/*void deleteSystem(flightSys_t* s) {
+void deleteSystem(flightSys_t* s) {
     if (s==NULL) return;
     while (!(s->airportList)){
         airport_t * head=s->airportList;
@@ -97,43 +97,9 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
         free(head);
     }
     free(s);
-}*/
-void deleteFlight(airport_t* a){
-    if (a==NULL) return;
-    flight_t* head;
-    flight_t* pointer=a->flightList;
-    while (!pointer){
-        head=pointer;
-        pointer=head->next;
-        free(head);
-    }
 }
-/*
-   Frees all memory associated with this system; that's all memory you dynamically allocated in your code.
- */
- // Bowen
-void deleteSystem(flightSys_t* s) {
-    if (s==NULL) return;
-    airport_t* pointer=s->airportList;
-    airport_t* head;
-    //flight_t* head2;
-    while (!pointer){
-        head=pointer;
-        //flight_t* pointer=head->flightList;
-        //free the memory allocated to airport
-        /**while (pointer!=NULL){
-            //free the memory allocated to flight
-    	    head2=pointer;
-            pointer=head2->next;
-            free(head2);
-        }*/
-        deleteFlight(pointer);
-        free(head->name);
-        pointer=head->next;
-        free(head);
-    }
-    free(s);
-}
+
+
 
 /*
    Adds a airport with the given name to the system. You must copy the string and store it.
