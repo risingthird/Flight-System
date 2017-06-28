@@ -82,8 +82,8 @@ void deleteFlight(airport_t* a){
     flight_t* temp;
     while (node != NULL){
 		temp = node;         
-    	node = node.next;  
-    	free (temp);
+    	node = node->next;  
+    	free(temp);
 	}
     a->flightList=NULL;
 }
