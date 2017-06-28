@@ -108,8 +108,8 @@ void deleteSystem(flightSys_t* s) {
         s->airportList=head->next;
         free(head);
     	}
+    }
     free(s);
-	}
 }
 
 
