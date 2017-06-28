@@ -74,7 +74,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    return newFlight;
 }
 
-void deleteFlight(aiport_t* a){
+void deleteFlight(airport_t* a){
     if (a==NULL) return;
     flight_t* head;
     flight_t* pointer=a->flightList;
