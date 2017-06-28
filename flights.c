@@ -62,15 +62,16 @@ flightSys_t* createSystem() {
 flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
    // Replace this line with your code
    flight_t* newFlight = (flight_t*) malloc(sizeof(flight_t));
-   //if(!newFlight) allocation_failed();
-   //else{
+   if(!newFlight) allocation_failed();
+   else{
        //newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
       // if(!newFlight->destination) allocation_failed();
-       newFlight->destination = dest;
+       if(!dest) newFlight->destination = dest;
+       else {free(newFlight); return NULL;}
        newFlight->departure = dep;
        newFlight->arrival = arr;
        if(c) newFlight->cost = c;
-  // }
+   }
    return newFlight;
 }
 
@@ -121,9 +122,9 @@ void addAirport(flightSys_t* s, char* name) {
     // Replace this line with your code
     if(name != NULL && s != NULL){
         airport_t* newAirport = (airport_t*) malloc(sizeof(airport_t));
-        //if(!newAirport){allocation_failed();}
+        if(!newAirport){allocation_failed();}
         newAirport->name = malloc(sizeof(char)*(strlen(name)+1));
-        //if(!newAirport->name) {allocation_failed();}
+        if(!newAirport->name) {allocation_failed();}
         strcpy(newAirport->name, name); // use string copy to store contents
         newAirport->flightList = NULL;
         newAirport->next = NULL;
@@ -184,7 +185,7 @@ void printAirports(flightSys_t* s) {
  */
  // Bowen
 void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* arrival, int cost) {
-    if (src!=NULL){
+    if (src!=NULL && dst!=NULL && cost && departure && arrival){
     	/**flight_t* newFlight=(flight_t* ) malloc(sizeof(flight_t));
         if (!newFlight){
     		allocation_failed();
@@ -256,7 +257,7 @@ void printSchedule(airport_t* s) {
  */
  //Bowen
 bool getNextFlight(airport_t* src, airport_t* dst, timeHM_t* now, timeHM_t* departure, timeHM_t* arrival, int* cost) {
-    if(!src || !dst) return false;
+    if(!src || !dst || !now) return false;
     flight_t *p=src->flightList;
     flight_t *nextFlight=NULL;
     bool flag=false;
@@ -293,9 +294,6 @@ int validateFlightPath(flight_t** flight_list, char** airport_name_list, int sz)
     int i = 0;
     if(!flight_list) return -1;
     while(i<sz){
-        //printf("here2\n");
-        //printf("%p\n",flight_list);
-        //printf("here3\n");
         if(*(flight_list+i+1) == NULL) break;
         else if(!isAfter(&((*(flight_list+i+1))->departure), &((*(flight_list+i))->arrival)) && !isEqual(&((*(flight_list+i+1))->departure),&((*(flight_list+i))->arrival)))
             {return -1;} // return -1 if the next flight doesn't depart after or at the same time with the former one
