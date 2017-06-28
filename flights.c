@@ -67,10 +67,10 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
        //newFlight->destination = (airport_t*) malloc(sizeof(airport_t));
        //if(!newFlight->destination) allocation_failed();
        if(!dest) {free(newFlight); return NULL;}
-       newFlight->destination = dest;
+       else{newFlight->destination = dest;
        newFlight->departure = dep;
        newFlight->arrival = arr;
-       if(c) newFlight->cost = c;
+       if(c) newFlight->cost = c;}
    }
    return newFlight;
 }
