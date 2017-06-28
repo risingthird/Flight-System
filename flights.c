@@ -79,12 +79,12 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
 
 void deleteFlight(airport_t* a){
 	node = a->flightList;              
-    while (node != null){
+    while (node != NULL){
 		temp = node;         
     	node = node.next;  
     	free (temp);
 	}
-    a->flightList=null;
+    a->flightList=NULL;
 }
 
 /*
@@ -96,7 +96,7 @@ void deleteSystem(flightSys_t* s) {
     while (!(s->airportList)){
         airport_t * head=s->airportList;
         //free the memory allocated to airport
-        if(head->flightList)!=null){
+        if(head->flightList)!=NULL){
             //free the memory allocated to flight
     	    /**flight_t* head2=head->flightList;
             head->flightList=head2->next;
