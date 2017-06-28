@@ -187,7 +187,7 @@ void addFlight(airport_t* src, airport_t* dst, timeHM_t* departure, timeHM_t* ar
     	newFlight->cost=cost;
         newFlight->next=NULL;
     	strcpy(newFlight->destination->name,dst->name);*/
-        if(!c || !dst){free(newFlight);return;}
+        if(!cost || !dst){free(newFlight);return;}
         else{
         newFlight = createFlight(dst,*departure,*arrival,cost);}
     	flight_t* head=src->flightList;
