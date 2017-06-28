@@ -71,7 +71,7 @@ flight_t* createFlight(airport_t* dest, timeHM_t dep, timeHM_t arr, int c) {
        newFlight->departure = dep;
        newFlight->arrival = arr;
        if(c) newFlight->cost = c;
-       nextFlight->next = NULL;
+       newFlight->next = NULL;
        }
    }
    return newFlight;
